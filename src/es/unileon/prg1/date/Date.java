@@ -21,7 +21,16 @@ public class Date {
 		if ( this.year == another.getYear() ){
 			return true;
 		}
-		return false;
+		else{
+
+			return false;
+		}
+	}
+
+	public int getMonth() {
+	
+		return this.month;
+
 	}
 
 	boolean isSameMonth(Date another){
@@ -31,8 +40,29 @@ public class Date {
 			return true;
 
 		}
+		else{
 
-		return false;
+			return false;
+		}
+	}
+
+	public int getDay() {
+	
+		return this.day;
+
+	}
+
+	boolean isSameDay(Date another) {
+
+		if (this.day == another.getDay() ){
+
+			return true;
+
+		}
+		else{
+
+			return false;
+		}
 	}
 	
 	public String toString(){

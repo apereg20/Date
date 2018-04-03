@@ -235,7 +235,7 @@ public class Date {
 				break;
 				
 			case 3:
-				if(day < 21){
+				if(day <= 20){
 					seasonMonth = "Invierno.";
 				}
 				else{
@@ -248,7 +248,7 @@ public class Date {
 				break;
 				
 			case 6:
-				if(day < 21){
+				if(day <= 20){
 					seasonMonth = "Primavera.";
 				}
 				else{
@@ -262,7 +262,7 @@ public class Date {
 				break;
 				
 			case 9:
-				if(day < 23){
+				if(day <= 22){
 					seasonMonth = "Verano.";
 				}
 				else{
@@ -276,7 +276,7 @@ public class Date {
 				break;
 				
 			case 12:
-				if(day < 21){
+				if(day <= 20){
 					seasonMonth = "Otoño.";
 				}
 				else{
@@ -294,14 +294,98 @@ public class Date {
 		
 		StringBuilder months = new StringBuilder();
 		
-		for(int i = this.month + 1; i <= 12; i++){
-			
-			months.append(this.getmonthName());
-		}
+		int k = 0, month = 0;
+		k =  this.month;
+		month = this.month;
 		
+		for(int i = k;  i <= 12; i++){
+			
+			months.append("\n" + this.getmonthName());
+			this.month = this.month+ 1;
+			
+		}
+		this.month = month;
 		return months.toString();
 	}
 	
+	//METODO QUE IMPRIME LA FECHA ******************************************************************************
+	
+	
+	
+	//DIAS QUE QUEDAN HASTA FINAL DE MES ***********************************************************************
+	
+	public String daysLeft(){
+		
+		StringBuilder days = new StringBuilder();
+		
+		int k = 0;
+		k =  this.day;
+		
+		if(this.month != 2){
+			
+			if((this.month != 4) || (this.month != 6) || (this.month != 9) || (this.month != 11)){
+		
+				for(int i = k;  i <= 31; i++){
+			
+					days.append("\n" + k);
+					k++;
+			
+				}
+			}
+			else{
+				
+				for(int i = k;  i <= 30; i++){
+					
+					days.append("\n" + k);
+					k++;
+			
+				}
+			}
+		}
+		else{
+			
+			for(int i = k;  i <= 28; i++){
+				
+				days.append("\n" + k);
+				k++;
+		
+			}
+		}
+		
+		return days.toString();
+	}
+	
+	//NUMERO DE DIAS DESDE EL PRMER DIA DEL AÑO ****************************************************************
+	
+	public int daysFirstday(){
+		
+		int k = 0, m = 0;
+		m = this.month;
+		m--;
+		int i = 0;
+		
+		for(i = 1; i <= m; i++){
+			
+			if(i != 2){
+				
+				if((i != 4) || (i != 6) || (i != 9) || (i != 11)){
+				
+					k = k + 31;
+				}
+				else{
 
+					k = k + 30;
+				}
+			}
+			else{
+				
+				k = k + 28;
+			}
+		}
+		k = k + this.day;
+		
+		return k;
+	}
+	
 }
 

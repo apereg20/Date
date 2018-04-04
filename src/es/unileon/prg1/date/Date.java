@@ -67,7 +67,6 @@ public class Date {
 				
 				break;
 		}
-			
 
 	}
 	
@@ -386,6 +385,85 @@ public class Date {
 		
 		return k;
 	}
+
+//Nº intentos para generar fecha igual a la introducida ***********************************************************************
+
+	//CON WHILE ************************************************************************************************
+
+	public int isSameDateWhile(){
+		
+		int counter = 0;
+		int _day = 0;
+		int _month = 0;
+
+		while((_day != this.day) || (_month != this.month)){
+
+			_month = (int) (Math.random() * 12) + 1;
+
+			if(_month == 2){
+
+				_day = (int) (Math.random() * 28) + 1;
+
+			}
+			else{
+
+				if((_month == 4) || (_month == 6) || (_month == 9) || (_month == 11)){
+
+					_day = (int) (Math.random() * 30) + 1;
+
+				}
+				else{
+
+					_day = (int) (Math.random() * 31) + 1;
+
+				}
+		}
+			
+			counter++;
+
+		}
+
+		return counter;
+	}
+	
+	//CON DO-WHILE *********************************************************************************************
+
+	public int isSameDateDoWhile(){
+		
+		int counter = 0;
+		int _day = 0;
+		int _month = 0;
+
+		do{
+
+			_month = (int) (Math.random() * 12) + 1;
+
+			if(_month == 2){
+
+				_day = (int) (Math.random() * 28) + 1;
+
+			}
+			else{
+
+				if((_month == 4) || (_month == 6) || (_month == 9) || (_month == 11)){
+
+					_day = (int) (Math.random() * 30) + 1;
+
+				}
+				else{
+
+					_day = (int) (Math.random() * 31) + 1;
+
+				}
+		}
+			
+			counter++;
+
+		}
+		while((_day != this.day) || (_month != this.month));
+
+		return counter;
+	}	
 	
 }
 

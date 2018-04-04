@@ -38,6 +38,10 @@ public class MainDate {
 		
 		System.out.println("Desde el primer día del año han pasado: " +today.daysFirstday()+ " días.");
 
+		System.out.println("Han sido necesarios " +today.isSameDateWhile()+ " intentos para generar la misma fecha.(Con bucle while)");
+
+		System.out.println("Han sido necesarios " +today.isSameDateDoWhile()+ " intentos para generar la misma fecha.(Con bucle do-while)");
+
 		}
 	}
 }

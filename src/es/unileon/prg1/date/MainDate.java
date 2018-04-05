@@ -38,9 +38,11 @@ public class MainDate {
 		
 		System.out.println("Desde el primer día del año han pasado: " +today.daysFirstday()+ " días.");
 
-		System.out.println("Han sido necesarios " +today.isSameDateWhile()+ " intentos para generar la misma fecha.(Con bucle while)");
+		System.out.println("BUCLE WHILE: Han sido necesarios " +today.isSameDateWhile()+ " intentos para generar la misma fecha.");
 
-		System.out.println("Han sido necesarios " +today.isSameDateDoWhile()+ " intentos para generar la misma fecha.(Con bucle do-while)");
+		System.out.println("BUCLE DO-WHILE: Han sido necesarios " +today.isSameDateDoWhile()+ " intentos para generar la misma fecha.");
+
+		System.out.println("Considerando que el 1 de Enero fue lunes. El día de la semana de " + today + " es: " + today.dayOfWeek());
 
 		}
 	}

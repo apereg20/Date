@@ -463,7 +463,60 @@ public class Date {
 		while((_day != this.day) || (_month != this.month));
 
 		return counter;
-	}	
-	
+	}
+
+	//DIA DE LA SEMANA *****************************************************************************************
+
+		//Suponiendo que el primer dia del año fuese lunes
+
+	public String dayOfWeek(){
+
+		int _day = 0;
+		String weekDay = null;
+
+		_day = (this.daysFirstday()) % 7;
+
+		switch(_day){
+
+			case 0:
+
+				weekDay = "Domingo.";
+				break;
+
+			case 1:
+
+				weekDay = "Lunes.";
+				break;
+
+			case 2:
+		
+				weekDay = "Martes.";
+				break;
+
+			case 3:
+
+				weekDay = "Miércoles.";
+				break;
+
+			case 4:
+
+				weekDay = "Jueves.";
+				break;
+
+			case 5:
+			
+				weekDay = "Viernes.";
+				break;
+
+			case 6:
+
+				weekDay = "Sábado.";
+				break;
+
+		}
+
+		return weekDay;
+
+	}
 }
 

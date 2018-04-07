@@ -266,7 +266,6 @@ public class Date {
 	public String getmonthName(int month){
 		
 		String nameMonth = null;
-		this.month = month;
 		
 			switch (month){
 			
@@ -451,16 +450,17 @@ public class Date {
 		
 		StringBuilder months = new StringBuilder();
 		
-		int k = 0, _month = 0;
-		k =  this.month;
-		_month = this.month;
+		int k = 0;
+		k =  month;
+		int _month = month;
 		
 		for(int i = k;  i <= 12; i++){
 			
 			months.append("\n" + this.getmonthName());
-			this.month = this.month+ 1;
+			month = month+ 1;
 			
 		}
+
 		this.month = _month;
 		return months.toString();
 	}
@@ -531,15 +531,19 @@ public class Date {
 	public String monthWithSameDays(){
 
 		StringBuffer dias = new StringBuffer();
+		int thismonth = 0;
+		thismonth = this.month;
 
 		for(int i = 1; i <= 12; i++){
 
-			if(daysOfMonth(i) == daysOfMonth(this.month)){
+			if(daysOfMonth(i) == daysOfMonth(thismonth)){
 
 				dias.append("\n" + getmonthName(i));
 
 			}
 		}
+
+		this.month = thismonth;
 
 		return dias.toString();
 
@@ -709,5 +713,6 @@ public class Date {
 		return weekDay;
 
 	}
+
 }
 

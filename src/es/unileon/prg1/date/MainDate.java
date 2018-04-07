@@ -39,6 +39,8 @@ public class MainDate {
 		System.out.println("La fecha es: " + today.printDate() );
 		
 		System.out.println("Hasta final de mes quedan los días: " + today.daysLeft() );
+
+		System.out.println("Los meses con el mismo número de días que " + today.getmonthName() + " Son: " + today.monthWithSameDays() );
 		
 		System.out.println("Desde el primer día del año han pasado: " + today.daysFirstday() + " días.");
 

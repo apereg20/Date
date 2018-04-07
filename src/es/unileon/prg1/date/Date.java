@@ -69,6 +69,16 @@ public class Date {
 		}
 
 	}
+
+	//ANOTHER **************************************************************************************************
+
+	public Date(Date another){
+
+		day = another.getDay();
+		month = another.getMonth();
+		year = another.getYear();
+	
+	}
 	
 	//YEAR *****************************************************************************************************
 	
@@ -76,8 +86,18 @@ public class Date {
 		return this.year;
 	}
 	
-	public void setYear(int newYear){
+	public void setYear(int newYear) throws DateException{
 		
+		if(newYear <= 0){
+			
+			throw new DateException("Los años no pueden ser menores o iguales que 0.");
+
+		}
+		else{
+		
+			year = newYear;
+	
+		}
 	}
 
 	boolean isSameYear(Date anotherYear){
@@ -98,8 +118,26 @@ public class Date {
 
 	}
 	
-	public void setMonth(int newMonth){
+	public void setMonth(int newMonth) throws DateException{
+
+		if(newMonth > 12){
+
+			throw new DateException("Los meses no pueden ser mayores que 12.");
+
+		}
+		else{
+
+			if(newMonth <= 0){
+			
+				throw new DateException("Los meses no pueden ser menores o iguales que 0.");
+
+			}
+			else{
 		
+				month = newMonth;
+	
+			}
+		}
 	}
 
 	boolean isSameMonth(Date anotherMonth){
@@ -123,8 +161,27 @@ public class Date {
 
 	}
 	
-	public void setDay(int newDay){
+	public void setDay(int newDay) throws DateException{
+	
+		if(newDay <= 0){
+
+			throw new DateException("Los días no pueden ser menores o iguales que 0.");
+
+		}
+		else{
+
+			if(newDay > daysOfMonth(month)){
+			
+				throw new DateException("No hay tantos días en este mes.");
+
+			}
+			else{
 		
+				day = newDay;
+	
+			}
+		}
+	
 	}
 
 	boolean isSameDay(Date anotherDay) {
@@ -159,10 +216,54 @@ public class Date {
 		
 		return this.day + "/" + this.month + "/" + this.year;
 	}
+
+	//NUMERO DE DIAS EN CADA MES *******************************************************************************
+
+	public int daysOfMonth(int month){
+
+		int nDays = 0;
+
+		switch(month){
+
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+
+				nDays = 31;
+				break;
+
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+
+				nDays = 30;
+				break;
+
+			case 2:
+
+				nDays = 28;
+				break;
+
+		}
+
+		return nDays;
+
+	}
+
+	public int daysOfMonth(){
+	
+		return this.daysOfMonth(month);
+
+	}
 	
 	//NOMBRE DEL MES *******************************************************************************************
 	
-	public String getmonthName(){
+	public String getmonthName(int month){
 		
 		String nameMonth = null;
 		this.month = month;
@@ -219,6 +320,12 @@ public class Date {
 					
 			}
 			return nameMonth;
+	}
+
+	public String getmonthName(){
+	
+		return this.getmonthName(month);
+
 	}
 
 	//COMPROBAR SI EL DIA DEL MES ES CORRECTO ******************************************************************
@@ -420,12 +527,23 @@ public class Date {
 	}
 
 	//MESES CON EL MISMO NUMERO DE DIAS ************************************************************************
-//TODO
-	/*public String monthWithSameDays(){
 
-		
+	public String monthWithSameDays(){
 
-	}*/
+		StringBuffer dias = new StringBuffer();
+
+		for(int i = 1; i <= 12; i++){
+
+			if(daysOfMonth(i) == daysOfMonth(this.month)){
+
+				dias.append("\n" + getmonthName(i));
+
+			}
+		}
+
+		return dias.toString();
+
+	}
 	
 	//NUMERO DE DIAS DESDE EL PRMER DIA DEL AÑO ****************************************************************
 	

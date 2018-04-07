@@ -26,23 +26,27 @@ public class MainDate {
 		
 		System.out.println(today + " es el mismo mes que " + tomorrow + "? " + today.isSameMonth(tomorrow) );
 		
-		System.out.println(today + " es el mismo año que " + tomorrow + "? " + today.isSameYear(tomorrow));
+		System.out.println(today + " es el mismo año que " + tomorrow + "? " + today.isSameYear(tomorrow) );
 		
-		System.out.println("Estamos en el mes: " +today.getmonthName());
-		
-		System.out.println("Estamos en la estación: " +today.monthSeason());
-		
-		System.out.println("Hasta final de año quedan los meses: " +today.monthsLeft());
-		
-		System.out.println("Hasta final de mes quedan los días: " +today.daysLeft());
-		
-		System.out.println("Desde el primer día del año han pasado: " +today.daysFirstday()+ " días.");
+		System.out.println("Estamos en el mes: " + today.getmonthName() );
 
-		System.out.println("BUCLE WHILE: Han sido necesarios " +today.isSameDateWhile()+ " intentos para generar la misma fecha.");
+		System.out.println("El día del mes es correcto? " + today.isDayRight() );
+		
+		System.out.println("Estamos en la estación: " + today.monthSeason() );
+		
+		System.out.println("Hasta final de año quedan los meses: " + today.monthsLeft() );
 
-		System.out.println("BUCLE DO-WHILE: Han sido necesarios " +today.isSameDateDoWhile()+ " intentos para generar la misma fecha.");
+		System.out.println("La fecha es: " + today.printDate() );
+		
+		System.out.println("Hasta final de mes quedan los días: " + today.daysLeft() );
+		
+		System.out.println("Desde el primer día del año han pasado: " + today.daysFirstday() + " días.");
 
-		System.out.println("Considerando que el 1 de Enero fue lunes. El día de la semana de " + today + " es: " + today.dayOfWeek());
+		System.out.println("BUCLE WHILE: Han sido necesarios " + today.isSameDateWhile() + " intentos para generar la misma fecha.");
+
+		System.out.println("BUCLE DO-WHILE: Han sido necesarios " + today.isSameDateDoWhile() + " intentos para generar la misma fecha.");
+
+		System.out.println("Considerando que el 1 de Enero fue lunes. El día de la semana de " + today + " es: " + today.dayOfWeek() );
 
 		}
 	}

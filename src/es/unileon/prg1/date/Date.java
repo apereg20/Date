@@ -165,8 +165,9 @@ public class Date {
 	public String getmonthName(){
 		
 		String nameMonth = null;
+		this.month = month;
 		
-			switch (this.month){
+			switch (month){
 			
 				case 1:	
 					nameMonth = "Enero.";
@@ -219,6 +220,56 @@ public class Date {
 			}
 			return nameMonth;
 	}
+
+	//COMPROBAR SI EL DIA DEL MES ES CORRECTO ******************************************************************
+
+	public boolean isDayRight(){
+
+		boolean right = false;
+
+		switch(month){
+
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+			case 12:
+
+				if((day >= 1) && (day <= 30)){
+
+					right = true;
+				}
+
+				break;
+
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+
+				if((day >= 1) && (day <=31)){
+
+					right = true;
+				}
+				
+				break;
+
+			case 2:
+		
+				if((day >= 1) && (day <= 28)){
+
+					right = true;
+				}
+
+				break;
+
+		}
+
+		return right;
+
+	}
 	
 	//ESTACIÓN DEL AÑO *****************************************************************************************
 	
@@ -226,7 +277,7 @@ public class Date {
 		
 		String seasonMonth = null;
 		
-		switch(this.month){
+		switch(month){
 		
 			case 1:
 			case 2:
@@ -293,9 +344,9 @@ public class Date {
 		
 		StringBuilder months = new StringBuilder();
 		
-		int k = 0, month = 0;
+		int k = 0, _month = 0;
 		k =  this.month;
-		month = this.month;
+		_month = this.month;
 		
 		for(int i = k;  i <= 12; i++){
 			
@@ -303,13 +354,20 @@ public class Date {
 			this.month = this.month+ 1;
 			
 		}
-		this.month = month;
+		this.month = _month;
 		return months.toString();
 	}
 	
-	//METODO QUE IMPRIME LA FECHA ******************************************************************************
+	//IMPRIME LA FECHA *****************************************************************************************
 	
-	
+	public String printDate(){
+
+		StringBuffer dateprint = new StringBuffer();
+
+		dateprint.append(getDay() + "/" + getMonth() + "/" + getYear() );
+
+		return dateprint.toString();
+	}
 	
 	//DIAS QUE QUEDAN HASTA FINAL DE MES ***********************************************************************
 	
@@ -317,8 +375,10 @@ public class Date {
 		
 		StringBuilder days = new StringBuilder();
 		
-		int k = 0;
+		int k = 0, num = 0, _month = 0, _year = 0;
 		k =  this.day;
+		_month = this.month;
+		_year = this.year;
 		
 		if(this.month != 2){
 			
@@ -326,17 +386,19 @@ public class Date {
 		
 				for(int i = k;  i <= 31; i++){
 			
-					days.append("\n" + k);
+					days.append("\n" + k + "/" + _month + "/" + _year);
 					k++;
-			
+					num = 31 - this.day;
+
 				}
 			}
 			else{
 				
 				for(int i = k;  i <= 30; i++){
 					
-					days.append("\n" + k);
+					days.append("\n" + k + "/" + _month + "/" + _year);
 					k++;
+					num = 30 - this.day;
 			
 				}
 			}
@@ -345,14 +407,25 @@ public class Date {
 			
 			for(int i = k;  i <= 28; i++){
 				
-				days.append("\n" + k);
+				days.append("\n" + k + "/" + _month + "/" + _year);
 				k++;
+				num = 28 - this.day;
 		
 			}
 		}
 		
 		return days.toString();
+		
+
 	}
+
+	//MESES CON EL MISMO NUMERO DE DIAS ************************************************************************
+//TODO
+	/*public String monthWithSameDays(){
+
+		
+
+	}*/
 	
 	//NUMERO DE DIAS DESDE EL PRMER DIA DEL AÑO ****************************************************************
 	

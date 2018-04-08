@@ -343,7 +343,7 @@ public class Date {
 			case 10:
 			case 12:
 
-				if((day >= 1) && (day <= 30)){
+				if((day >= 1) && (day <= 31)){
 
 					right = true;
 				}
@@ -355,7 +355,7 @@ public class Date {
 			case 9:
 			case 11:
 
-				if((day >= 1) && (day <=31)){
+				if((day >= 1) && (day <=30)){
 
 					right = true;
 				}
@@ -482,20 +482,17 @@ public class Date {
 		
 		StringBuilder days = new StringBuilder();
 		
-		int k = 0, num = 0, _month = 0, _year = 0;
-		k =  this.day;
-		_month = this.month;
-		_year = this.year;
-		
-		if(this.month != 2){
+		int k = 0;
+		k =  day;
+
+		if(month != 2){
 			
-			if((this.month != 4) || (this.month != 6) || (this.month != 9) || (this.month != 11)){
+			if((month != 4) || (month != 6) || (month != 9) || (month != 11)){
 		
 				for(int i = k;  i <= 31; i++){
 			
-					days.append("\n" + k + "/" + _month + "/" + _year);
+					days.append("\n" + k + "/" + month + "/" + year);
 					k++;
-					num = 31 - this.day;
 
 				}
 			}
@@ -503,9 +500,8 @@ public class Date {
 				
 				for(int i = k;  i <= 30; i++){
 					
-					days.append("\n" + k + "/" + _month + "/" + _year);
+					days.append("\n" + k + "/" + month + "/" + year);
 					k++;
-					num = 30 - this.day;
 			
 				}
 			}
@@ -514,10 +510,9 @@ public class Date {
 			
 			for(int i = k;  i <= 28; i++){
 				
-				days.append("\n" + k + "/" + _month + "/" + _year);
+				days.append("\n" + k + "/" + month + "/" + year);
 				k++;
-				num = 28 - this.day;
-		
+
 			}
 		}
 		
@@ -554,29 +549,31 @@ public class Date {
 	public int daysFirstday(){
 		
 		int k = 0, m = 0;
-		m = this.month;
-		m--;
+		m = month;
+
 		int i = 0;
 		
-		for(i = 1; i <= m; i++){
+		for(i = 1; i < m; i++){
 			
-			if(i != 2){
-				
-				if((i != 4) || (i != 6) || (i != 9) || (i != 11)){
-				
-					k = k + 31;
-				}
-				else{
+			if(i == 2){
 
-					k = k + 30;
-				}
+				k = k + 28;
+
 			}
 			else{
 				
-				k = k + 28;
+				if((i == 4) || (i == 6) || (i == 9) || (i == 11)){
+				
+					k = k + 30;
+				}
+				else{
+
+					k = k + 31;
+				}
 			}
 		}
-		k = k + this.day;
+
+		k = k + day;
 		
 		return k;
 	}

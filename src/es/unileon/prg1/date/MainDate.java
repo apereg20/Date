@@ -9,7 +9,7 @@ public class MainDate {
 		
 		try{
 
-			today = new Date(20, 3, 2018);
+			today = new Date(3, 7, 2018);
 			System.out.println("Today: " + today);
 			tomorrow = new Date(21, 3, 2018);
 			System.out.println("Tomorrow: " + tomorrow);
